@@ -1,0 +1,25 @@
+slug: add_order
+name: add-order
+parameters:
+  - slug: order_date
+    name: Order Date
+    type: date
+    required: true
+  - slug: order_status
+    name: Order Status
+    type: shorttext
+    required: true
+    options:
+      - completed
+      - returned
+  - slug: user_id
+    name: User ID
+    type: integer
+    required: true
+sql:
+  resource: "local_db_server"
+  entrypoint: add_order.sql
+  queryArgs:
+    order_date: "{{params.order_date}}"
+    order_status: "{{params.order_status}}"
+    user_id: "{{params.user_id}}"

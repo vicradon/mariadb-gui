@@ -1,0 +1,5 @@
+slug: fetch_orders
+name: fetch-orders
+sql:
+  resource: "local_db_server"
+  entrypoint: fetch_orders.sql

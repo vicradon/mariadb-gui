@@ -1,0 +1,17 @@
+slug: add_customer
+name: add-customer
+parameters:
+  - slug: first_name
+    name: First Name
+    type: shorttext
+    required: true
+  - slug: last_name
+    name: Last Name
+    type: shorttext
+    required: true
+sql:
+  resource: "local_db_server"
+  entrypoint: add_customer.sql
+  queryArgs:
+    first_name: "{{params.first_name}}"
+    last_name: "{{params.last_name}}"

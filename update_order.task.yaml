@@ -1,0 +1,30 @@
+slug: update_order
+name: update-order
+parameters:
+  - slug: id
+    name: ID
+    type: integer
+    required: true
+  - slug: order_status
+    name: Order Status
+    type: shorttext
+    required: true
+    options:
+      - completed
+      - returned
+  - slug: user_id
+    name: User ID
+    type: integer
+    required: true
+  - slug: order_date
+    name: Order Date
+    type: date
+    required: true
+sql:
+  resource: "local_db_server"
+  entrypoint: update_order.sql
+  queryArgs:
+    id: "{{params.id}}"
+    order_date: "{{params.order_date}}"
+    order_status: "{{params.order_status}}"
+    user_id: "{{params.user_id}}"

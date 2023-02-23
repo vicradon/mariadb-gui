@@ -1,0 +1,12 @@
+resources:
+    - database: test_db
+      host: localhost
+      kind: mysql
+      name: local_db_server
+      password: password
+      port: "3306"
+      slug: local_db_server
+      tls: "false"
+      username: root
+configVars: {}
+envVars: {}

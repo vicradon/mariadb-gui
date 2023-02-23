@@ -1,0 +1,12 @@
+slug: delete_order
+name: delete-order
+parameters:
+  - slug: id
+    name: ID
+    type: integer
+    required: true
+sql:
+  resource: "local_db_server"
+  entrypoint: delete_order.sql
+  queryArgs:
+    id: "{{params.id}}"

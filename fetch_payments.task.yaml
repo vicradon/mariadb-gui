@@ -1,0 +1,5 @@
+slug: fetch_payments
+name: fetch-payments
+sql:
+  resource: "local_db_server"
+  entrypoint: fetch_payments.sql
