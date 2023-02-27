@@ -8,6 +8,11 @@ parameters:
   - slug: payment_method
     name: Payment Method
     type: shorttext
+    options:
+      - credit_card
+      - bank_transfer
+      - gift_card
+      - coupon
     required: true
   - slug: amount
     name: Amount

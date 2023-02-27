@@ -2,15 +2,6 @@
 # yarn lockfile v1
 
 
-"@airplane/lib@0.2.38":
-  version "0.2.38"
-  resolved "https://registry.yarnpkg.com/@airplane/lib/-/lib-0.2.38.tgz#120d62b66be0f9635692a68282a57b3f42f3f6b8"
-  integrity sha512-QJng+sr0lerOqoFxDNP+rKz+6WKkt+/dZAxQwKHCsnzwehhbUW8Dh9lWXi08EvE48t07l95jWxDXOH82iu50Fw==
-  dependencies:
-    "@azure/abort-controller" "1.1.0"
-    cross-fetch "3.1.5"
-    uuid "9.0.0"
-
 "@airplane/lib@0.2.39":
   version "0.2.39"
   resolved "https://registry.yarnpkg.com/@airplane/lib/-/lib-0.2.39.tgz#5051102f68c177fb6d4fea1d91f3fe29dd1c7956"
@@ -20,12 +11,12 @@
     cross-fetch "3.1.5"
     uuid "9.0.0"
 
-"@airplane/views@^1.14.4":
-  version "1.14.4"
-  resolved "https://registry.yarnpkg.com/@airplane/views/-/views-1.14.4.tgz#97f55698b87de4e43dbcb8bdebe5ec136cd7b9d5"
-  integrity sha512-yf77ZZZf76EtNWdtPDMfpKuCDoaoEDbDpr0oRqdxb4JfyurRkb/hv35r/arF8gkTda9x4/95O2GwaNwvxHDduw==
+"@airplane/views@^1.14.5":
+  version "1.14.5"
+  resolved "https://registry.yarnpkg.com/@airplane/views/-/views-1.14.5.tgz#22fdb588882627694508a71ad9c6633e4b38f954"
+  integrity sha512-AgTmgE9WlPrDjpfzueQSUShhKxQsr5pVxq6sy74xlhpTz1sWLhtlQLwGXDTVlpKZepijxRvYbxQ/nque0FDBPQ==
   dependencies:
-    "@airplane/lib" "0.2.38"
+    "@airplane/lib" "0.2.39"
     "@babel/runtime" "7.20.13"
     "@codemirror/autocomplete" "6.4.0"
     "@codemirror/lang-javascript" "6.1.2"
@@ -45,7 +36,7 @@
     "@mantine/notifications" "5.10.1"
     "@mantine/prism" "5.10.1"
     "@uiw/react-codemirror" "4.19.7"
-    airplane "0.2.38"
+    airplane "0.2.39"
     codemirror "6.0.1"
     currency-symbol-map "5.1.0"
     dayjs "1.11.7"
@@ -118,9 +109,9 @@
     regenerator-runtime "^0.13.11"
 
 "@babel/types@^7.18.6":
-  version "7.21.0"
-  resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.21.0.tgz#1da00d89c2f18b226c9207d96edbeb79316a1819"
-  integrity sha512-uR7NWq2VNFnDi7EYqiRz2Jv/VQIu38tu64Zy8TX2nQFQ6etJ9V/Rr2msW8BS132mum2rL645qpDrLtAJtVpuow==
+  version "7.21.2"
+  resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.21.2.tgz#92246f6e00f91755893c2876ad653db70c8310d1"
+  integrity sha512-3wRZSs7jiFaB8AjxiiD+VqN5DTG2iRvJGQ+qYFrs/654lg6kGTQWIOFjlBo5RaXuAZjBmP3+OQH4dmhqiiyYxw==
   dependencies:
     "@babel/helper-string-parser" "^7.19.4"
     "@babel/helper-validator-identifier" "^7.19.1"
@@ -677,21 +668,7 @@
     "@uiw/codemirror-extensions-basic-setup" "4.19.7"
     codemirror "^6.0.0"
 
-airplane@0.2.38:
-  version "0.2.38"
-  resolved "https://registry.yarnpkg.com/airplane/-/airplane-0.2.38.tgz#9760d1cab208b37bcec47d901ea00ae658b558f0"
-  integrity sha512-32h4MWU/40ArtM0DqBMDF7JUEKtGki7P1zxPPs1x9m7S4KTyr+zDaQZv8l+dn6CFTt4vo2f6Q7GdvmNCQ7WQfA==
-  dependencies:
-    "@airplane/lib" "0.2.38"
-    "@azure/abort-controller" "1.1.0"
-    "@opentelemetry/api" "1.2.0"
-    fast-equals "4.0.3"
-    humanize-string "3.0.0"
-    ms "3.0.0-canary.1"
-    ts-dedent "2.2.0"
-    uuid "9.0.0"
-
-airplane@^0.2.39:
+airplane@0.2.39, airplane@^0.2.39:
   version "0.2.39"
   resolved "https://registry.yarnpkg.com/airplane/-/airplane-0.2.39.tgz#84ec4053e95cb6952946599e284020f9c4516137"
   integrity sha512-jcVi9E1p7qw7EjuVoCOSZ06iXiQdoKTPmeIepmox6+RvN5eXVz7iDwR5vZGRxxm15oYRBkk2D75uWPWoqHAS/A==

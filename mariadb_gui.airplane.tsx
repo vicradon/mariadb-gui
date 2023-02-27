@@ -1,113 +1,230 @@
-import { Stack, Table, Text, Title, useComponentState } from "@airplane/views";
+import {
+  Button,
+  Dialog,
+  Form,
+  Stack,
+  Table,
+  Title,
+  useComponentState,
+} from "@airplane/views";
 import airplane from "airplane";
 
-// Put the main logic of the view here.
-// Views documentation: https://docs.airplane.dev/views/getting-started
-const ExampleView = () => {
-  const customersState = useComponentState();
-  const selectedCustomer = customersState.selectedRow;
+const AddCustomerDialog = () => {
+  const { id, open, close } = useComponentState();
+  return (
+    <>
+      <Dialog id={id} title="Add customer" onClose={close}>
+        <Form task="add_customer" />
+      </Dialog>
 
+      <Stack direction="row" justify="end">
+        <Button onClick={open}>Add Customer</Button>
+      </Stack>
+    </>
+  );
+};
+
+const AddOrderDialog = () => {
+  const { id, open, close } = useComponentState();
+  return (
+    <>
+      <Dialog id={id} title="Add order" onClose={close}>
+        <Form task="add_order" />
+      </Dialog>
+
+      <Stack direction="row" justify="end">
+        <Button onClick={open}>Add Order</Button>
+      </Stack>
+    </>
+  );
+};
+
+const AddPaymentDialog = () => {
+  const { id, open, close } = useComponentState();
+  return (
+    <>
+      <Dialog id={id} title="Add payment" onClose={close}>
+        <Form task="add_payment" />
+      </Dialog>
+
+      <Stack direction="row" justify="end">
+        <Button onClick={open}>Add Payment</Button>
+      </Stack>
+    </>
+  );
+};
+
+const CustomersView = () => {
   return (
     <Stack>
-      <Title>Customer overview</Title>
-      <Text>An example view that showcases customers and users.</Text>
+      <Stack direction="row" justify="space-between">
+        <Title>Customers</Title>
+        <AddCustomerDialog />
+      </Stack>
+
       <Table
-        id={customersState.id}
         title="Customers"
-        columns={customersCols}
-        data={customersData}
-        rowSelection="single"
+        task="fetch_customers"
+        rowSelection="checkbox"
+        columns={[
+          {
+            label: "First name",
+            accessor: "first_name",
+            canEdit: true,
+          },
+          {
+            label: "Last name",
+            accessor: "last_name",
+            canEdit: true,
+          },
+        ]}
+        rowActions={[
+          {
+            slug: "update_customer",
+            label: "Update",
+          },
+          {
+            slug: "delete_customer",
+            label: "Delete",
+            confirm: {
+              title: "Are you sure you want to delete this row?",
+              body: "This action cannot be undone.",
+              confirmText: "Delete",
+              cancelText: "Take me back",
+            },
+          },
+        ]}
       />
-      {selectedCustomer && (
-        <Table
-          title={`Users for ${selectedCustomer.name}`}
-          data={usersData.filter((u) => u.customer_id == selectedCustomer.id)}
-          columns={usersCols}
-          hiddenColumns={["customer_id"]}
-        />
-      )}
     </Stack>
   );
 };
 
-// Example data: replace with your own data or use an Airplane task
-// Data fetching documentation: https://docs.airplane.dev/views/data-fetching
-const customersData = [
-  {
-    id: "0",
-    name: "Future Golf Partners",
-    country: "Brazil",
-  },
-  {
-    id: "1",
-    name: "Blue Sky Corp",
-    country: "France",
-  },
-];
+const OrdersView = () => {
+  return (
+    <Stack>
+      <Stack direction="row" justify="space-between">
+        <Title>Orders</Title>
+        <AddOrderDialog />
+      </Stack>
 
-const usersData = [
-  {
-    id: "1",
-    customer_id: "0",
-    name: "Frances Hernandez",
-    role: "Engineer",
-    email: "frances.hernandez@futuregolfpartners.com",
-  },
-  {
-    id: "2",
-    customer_id: "0",
-    name: "Melissa Rodriguez",
-    role: "Engineer",
-    email: "melissa.rodriguez@futuregolfpartners.com",
-  },
-  {
-    id: "3",
-    customer_id: "1",
-    name: "Roy Hernandez",
-    role: "Sales",
-    email: "roy.hernandez.1@blueskycorp.us",
-  },
-];
-// End of example data
+      <Table
+        title="Orders"
+        task="fetch_orders"
+        rowSelection="checkbox"
+        columns={[
+          {
+            label: "User ID",
+            accessor: "user_id",
+            canEdit: true,
+          },
+          {
+            label: "Order Date",
+            accessor: "order_date",
+            canEdit: true,
+          },
+          {
+            label: "Order Status",
+            accessor: "order_status",
+            typeOptions: {
+              selectData: ["completed", "returned"],
+            },
+            canEdit: true,
+          },
+        ]}
+        rowActions={[
+          {
+            slug: "update_order",
+            label: "Update",
+          },
+          {
+            slug: "delete_order",
+            label: "Delete",
+            confirm: {
+              title: "Are you sure you want to delete this row?",
+              body: "This action cannot be undone.",
+              confirmText: "Delete",
+              cancelText: "Take me back",
+            },
+          },
+        ]}
+      />
+    </Stack>
+  );
+};
 
-const customersCols = [
-  {
-    label: "Customer ID",
-    accessor: "id",
-  },
-  {
-    label: "Name",
-    accessor: "name",
-  },
-  {
-    label: "Country",
-    accessor: "country",
-  },
-];
+const PaymentsView = () => {
+  return (
+    <Stack>
+      <Stack direction="row" justify="space-between">
+        <Title>Payments</Title>
+        <AddPaymentDialog />
+      </Stack>
 
-const usersCols = [
-  {
-    label: "User ID",
-    accessor: "id",
-  },
-  {
-    label: "Name",
-    accessor: "name",
-  },
-  {
-    label: "Role",
-    accessor: "role",
-  },
-  {
-    label: "Email",
-    accessor: "email",
-  },
-];
+      <Table
+        title="Orders"
+        task="fetch_payments"
+        rowSelection="checkbox"
+        columns={[
+          {
+            label: "Order ID",
+            accessor: "order_id",
+            canEdit: true,
+          },
+          {
+            label: "Payment Method",
+            accessor: "payment_method",
+            typeOptions: {
+              selectData: [
+                "credit_card",
+                "bank_transfer",
+                "gift_card",
+                "coupon",
+              ],
+            },
+            canEdit: true,
+          },
+          {
+            label: "Amount",
+            accessor: "amount",
+
+            canEdit: true,
+          },
+        ]}
+        rowActions={[
+          {
+            slug: "update_payment",
+            label: "Update",
+          },
+          {
+            slug: "delete_payment",
+            label: "Delete",
+            confirm: {
+              title: "Are you sure you want to delete this row?",
+              body: "This action cannot be undone.",
+              confirmText: "Delete",
+              cancelText: "Take me back",
+            },
+          },
+        ]}
+      />
+    </Stack>
+  );
+};
+
+const MariaDBGui = () => {
+  return (
+    <Stack spacing={"xl"}>
+      <CustomersView />
+      <OrdersView />
+      <PaymentsView />
+    </Stack>
+  );
+};
 
 export default airplane.view(
   {
-    slug: "mariadb_gui",
-    name: "mariadb_gui",
+    slug: "maria_db_gui",
+    name: "Maria DB GUI",
   },
-  ExampleView
+  MariaDBGui
 );
