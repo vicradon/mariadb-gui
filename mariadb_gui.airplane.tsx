@@ -68,6 +68,11 @@ const CustomersView = () => {
         rowSelection="checkbox"
         columns={[
           {
+            label: "ID",
+            accessor: "id",
+            canEdit: false,
+          },
+          {
             label: "First name",
             accessor: "first_name",
             canEdit: true,
@@ -113,6 +118,11 @@ const OrdersView = () => {
         rowSelection="checkbox"
         columns={[
           {
+            label: "ID",
+            accessor: "id",
+            canEdit: false,
+          },
+          {
             label: "User ID",
             accessor: "user_id",
             canEdit: true,
@@ -124,7 +134,7 @@ const OrdersView = () => {
           },
           {
             label: "Order Status",
-            accessor: "order_status",
+            accessor: "status",
             typeOptions: {
               selectData: ["completed", "returned"],
             },
@@ -166,6 +176,11 @@ const PaymentsView = () => {
         rowSelection="checkbox"
         columns={[
           {
+            label: "ID",
+            accessor: "id",
+            canEdit: false,
+          },
+          {
             label: "Order ID",
             accessor: "order_id",
             canEdit: true,
@@ -186,7 +201,6 @@ const PaymentsView = () => {
           {
             label: "Amount",
             accessor: "amount",
-
             canEdit: true,
           },
         ]}
